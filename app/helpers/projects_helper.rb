@@ -9,7 +9,7 @@ module ProjectsHelper
 	end
 
 	def image_for(project)
-	project.image.exists? ? image_tag(project.image.url(:small)) : image_tag('placeholder.png')
+	project.image.exists? ? image_tag(project.image.url(:small)) : image_tag('placeholder.png', height: '90', alt: 'No Image')
 	end
 
 

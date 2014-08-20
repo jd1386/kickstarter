@@ -4,17 +4,20 @@
 
 body > .container {
 	padding: 60px 15px 0;
-  
-    article { 
-      h3 {
-      text-transform: uppercase;
-      	a:hover {
-        	text-decoration: none;
-      	}
-    	}
-      p a:hover {
-        text-decoration: none;
-      }
+}
+
+.media-body { 
+  h2 {
+    margin-top: -3px;
+    a:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.media-object {
+  img {
+    padding-right: 15px;
   }
 }
 
