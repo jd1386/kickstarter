@@ -1,0 +1,46 @@
+<div>
+	<ul class="pager">
+		<li class="previous"><%= link_to raw("&larr; Back to Index"), projects_path %></li>
+		<li class="previous"><%= link_to "Edit", edit_project_path(@project) %></li>
+		<li class="previous"><%= link_to "Delete", project_path(@project),
+													method: :delete,
+													data: { confirm: "Are you sure?" } %></li>
+</div>
+
+<article class="project">
+<div class="page-header"><h2><%= @project.name %></h2></div>
+<!--<div><%= image_tag(@project.image.url) %></div>-->
+
+<div><%= image_for(@project) %></div> 
+
+<div>
+	<h4>Target Pledge Amount: </h4>
+	<div><%= number_to_currency(@project.target_pledge_amount) %>
+	</div>
+</div>
+<div>
+	<h4>Pledging Ends:</h4>
+	<div>
+		<%= @project.pledging_ends_on %>
+		<span>(<%= format_pledging_ends_on(@project) %>)</span>
+	</div>
+</div>
+<div>
+	<h4>Website:</h4>
+	<div>
+		<%= link_to "#{@project.website}", @project.website, target: '_blank' %>
+	</div>
+</div>
+<div>
+	<h4>Description</h4>
+	<div><%= @project.description %>
+</div>
+<div>
+	<h4>Team Members:</h4>
+	<div>
+		<%= @project.team_members %>
+	</div>
+</div>
+
+
+</article>

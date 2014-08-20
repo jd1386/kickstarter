@@ -1,0 +1,65 @@
+<%= form_for @project, :html => { :multipart => true } do |f| %>
+
+<form class="form-horizontal" role="form">
+	<div class="form-group">
+		<%= f.label :name, class: 'col-sm-2 control-label' %>
+		<div class="input-group">
+			<%= f.text_field :name, size: 80, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :image, class: 'col-sm-2 control-label' %>
+		<div class="input-group">
+			<%= f.file_field :image %>
+		</div>
+	</div>
+
+
+	<div class="form-group">	
+		<%= f.label :target_pledge_amount, class: 'col-sm-2 control-label' %>
+		<div class="input-group" style="max-width:400px">
+				<span class="input-group-addon">$</span>	
+			<%= f.number_field :target_pledge_amount, class: 'form-control' %>
+			<span class="input-group-addon">.00</span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :pledging_ends_on, class: 'col-sm-2 control-label' %>
+		<div class="input-group">
+			<%= f.date_select :pledging_ends_on, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :website, class: 'col-sm-2 control-label' %>
+		<div class="input-group">
+			<%= f.text_field :website, class: 'form-control', size: 50 %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :description, class: 'col-sm-2 control-label' %>
+		<div class="input-group">
+			<%= f.text_area :description, cols: 82, rows: 12, class: 'form-control' %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :team_members, class: 'col-sm-2 control-label' %>
+		<div class="input-group">
+			<%= f.text_field :team_members, size: 80, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="btn-group">
+			<%= f.submit class: "btn btn-primary" %>
+		</div>
+		<div class="btn-group">
+			<%= button_to "Cancel", @project, class: "btn btn-danger"  %>
+		</div>
+	</div>
+
+</form>
+<% end %>
