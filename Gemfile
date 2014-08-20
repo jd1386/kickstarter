@@ -41,7 +41,10 @@ gem 'spring',        group: :development
 gem 'faker', '~> 1.4.2',	group: :development
 
 # paperclip-dropbox for image processing, uploads, and storage
-gem 'paperclip-dropbox', '~> 1.2.2'
+# gem 'paperclip-dropbox', '~> 1.2.2'
+
+gem 'paperclip'
+gem 'aws-sdk'
 
 # Use thin to disable error message from webrick
 gem 'thin'

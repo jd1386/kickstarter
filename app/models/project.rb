@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
 
 has_attached_file :image, styles: { small: "90x133>", thumb: "50x50>" },
-	:storage => :dropbox,
+	:storage => :aws,
 	:download => true,
 	:dropbox_credentials => Rails.root.join("config/dropbox.yml")
 

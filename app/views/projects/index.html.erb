@@ -6,18 +6,21 @@
 </div>
 
 <% @projects.each do |project| %>
-<article class="project" id="<%= raw(project.id) %>">
-	<div>
+<div class="media" id="<%= raw(project.id) %>">
+	<a class="pull-left" href="#">
+		<div class="media-object"><%= image_for(project) %></div> 
+	</a>
+	<div class="media-body">
 		<h2><%= link_to "#{project.name}", project_path(project) %></h2>
-	</div>
-	<div>
-		<div>Target <%= number_to_currency(project.target_pledge_amount) %>, ends on <%= project.pledging_ends_on %> (<%= format_pledging_ends_on(project) %>) </div>
-		<div>Website: <%= link_to "#{project.website}", project.website, target: '_blank' %></div>
-		<div>Created <%= project.created_at %> / Updated <%= project.updated_at %></div>
 		<div>
-			<p><%= truncate(project.description, length: 160, separator: ' ') { link_to "Continue Reading..", project } %></p>
+			<div>Target <%= number_to_currency(project.target_pledge_amount) %>, ends on <%= project.pledging_ends_on %> (<%= format_pledging_ends_on(project) %>) </div>
+			<div>Website: <%= link_to "#{project.website}", project.website, target: '_blank' %></div>
+			<div>Created <%= project.created_at %> / Updated <%= project.updated_at %></div>
+			<div>
+				<p><%= truncate(project.description, length: 160, separator: ' ') { link_to "Continue Reading..", project } %></p>
+			</div>
 		</div>
 	</div>
-</article>
+</div>
 <hr></hr>
 <% end %>
