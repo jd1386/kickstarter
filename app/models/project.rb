@@ -1,5 +1,11 @@
 class Project < ActiveRecord::Base
 
+validates :name, :description, presence: true
+
+validates :description, length: { minimum: 2 }
+
+validates :target_pledge_amount, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
 has_attached_file :image, styles: { small: "90x133>", thumb: "50x50>" }
 
 validates_attachment :image, 
