@@ -12,6 +12,8 @@ validates_attachment :image,
   :content_type => { :content_type => ['image/jpeg', 'image/png'] },
   :size => { :less_than => 5.megabyte }
 
+has_many :pledges
+
 ##################
 
 def self.accepting_pledges_only
