@@ -49,6 +49,9 @@ gem 'aws-sdk'
 # Use thin to disable error message from webrick
 gem 'thin'
 
+# Use rails_12factor gem to enable all platform features, as advised from Heroku
+gem 'rails_12factor'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
