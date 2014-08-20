@@ -1,9 +1,6 @@
 class Project < ActiveRecord::Base
 
-has_attached_file :image, styles: { small: "90x133>", thumb: "50x50>" },
-	:storage => :aws,
-	:download => true,
-	:dropbox_credentials => Rails.root.join("config/dropbox.yml")
+has_attached_file :image, styles: { small: "90x133>", thumb: "50x50>" }
 
 validates_attachment :image, 
   :content_type => { :content_type => ['image/jpeg', 'image/png'] },
