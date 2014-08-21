@@ -9,8 +9,15 @@
 
 <article class="project">
 <div class="page-header"><h2><%= @project.name %></h2></div>
-
 <div><%= image_for(@project) %></div> 
+
+<% if @project.project_successful? %>
+<div>Successful!</div>
+<% else %>
+<div>Not yet!</div>
+<% end %>
+
+<div><%= number_to_percentage(@project.rate, precision: 2)%></div>
 
 <div>
 	<h4>Target Pledge Amount: </h4>
@@ -40,6 +47,10 @@
 		<%= @project.team_members %>
 	</div>
 </div>
-
-
 </article>
+
+<% if @pledges.any? %>
+ <%= render 'pledges/index_embedded' %>
+<% else %>
+ <%= "There're no pledges yet." %>
+<% end %>

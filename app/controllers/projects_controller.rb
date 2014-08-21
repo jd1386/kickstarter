@@ -7,6 +7,8 @@ end
 
 def show
 	@project = Project.find(params[:id])
+	@pledges = @project.pledges.order("created_at desc")
+	@pledge = @project.pledges.new
 end
 
 def new

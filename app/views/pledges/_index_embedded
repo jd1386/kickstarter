@@ -1,0 +1,13 @@
+	<hr>
+	<h3><%= pluralize(@pledges.size, 'Pledge') %>:
+		<span><%= number_to_currency(@project.total_pledges)%></span>
+	</h3>
+	<% @pledges.each do |pledge| %>
+	<article class="pledge">
+		<div><%= pledge.name %> (<%= pledge.email %>) supports 
+			<%= number_to_currency(pledge.amount) %></div>
+		<div style="padding-left:15px"><i>"<%= pledge.comment %>"</i> - <%= pledge.created_at %></div>
+	</article>
+	<% end %>
+	<hr>
+	<%= render 'pledges/form' %>

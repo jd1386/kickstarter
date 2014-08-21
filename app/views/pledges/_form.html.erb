@@ -1,0 +1,46 @@
+<%= form_for [@project, @pledge] do |f| %>
+
+<form class="form-horizontal" role="form">
+	<div class="form-group">
+		<%= f.label :name, class: 'col-sm-2 control-label' %>
+		<div class="input-group">
+			<%= f.text_field :name, size: 80, class: 'form-control' %>
+		</div>
+	</div>
+
+
+	<div class="form-group">	
+		<%= f.label :email, class: 'col-sm-2 control-label' %>
+		<div class="input-group" style="max-width:400px">
+			<%= f.text_field :email, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+	<%= f.label :amount, class: 'col-sm-2 control-label' %>
+		<% Pledge::AMOUNTS.each do |amount| %>
+			<label class="radio-inline">
+				<%= f.radio_button :amount, amount %> <%= amount %>
+			</label>
+		<% end %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :comment, class: 'col-sm-2 control-label' %>
+		<div class="input-group">
+			<%= f.text_field :comment, class: 'form-control', size: 50 %>
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<div class="btn-group">
+			<%= f.submit class: "btn btn-primary" %>
+		</div>
+		<div class="btn-group">
+			<%= button_to "Cancel", @project, class: "btn btn-danger"  %>
+		</div>
+	</div>
+
+</form>
+<% end %>

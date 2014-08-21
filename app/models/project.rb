@@ -18,7 +18,18 @@ has_many :pledges
 
 def self.accepting_pledges_only
 	where("pledging_ends_on >= ?", Time.now).order("pledging_ends_on")
+end
 
+def total_pledges
+	pledges.sum(:amount)
+end
+
+def rate
+	(total_pledges / self.target_pledge_amount) * 100
+end
+
+def project_successful?
+	total_pledges >= self.target_pledge_amount
 end
 
 end
