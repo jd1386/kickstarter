@@ -25,7 +25,7 @@ def total_pledges
 end
 
 def rate
-	(total_pledges / self.target_pledge_amount) * 100
+	(self.total_pledges / self.target_pledge_amount) * 100
 end
 
 def project_successful?

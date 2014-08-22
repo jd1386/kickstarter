@@ -1,5 +1,8 @@
 class ProjectsController < ApplicationController
 
+before_action :require_signin, except: [:index, :show]
+before_action :require_admin, except: [:index, :show]
+
 def index
 	 @projects = Project.accepting_pledges_only
 	#@projects = Project.all.order("created_at desc")
@@ -19,6 +22,7 @@ def create
 	@project = Project.new(project_params)
 	if @project.save
 		redirect_to @project
+		flash[:success] = "Project successfully created!"
 	else
 		render :new
 	end
@@ -32,6 +36,7 @@ def update
 	@project = Project.find(params[:id])
 	if @project.update(project_params)
 		redirect_to @project
+		flash[:success] = "Project successfully edited!"
 	else
 		render :edit
 	end
@@ -41,6 +46,7 @@ def destroy
 	@project = Project.find(params[:id])
 	@project.destroy
 	redirect_to projects_path
+	flash[:success] = "Project successfully deleted!"
 end
 
 

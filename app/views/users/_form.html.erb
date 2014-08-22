@@ -1,0 +1,45 @@
+<%= form_for @user do |f| %>
+
+<%= render 'shared/error', object: @user %>
+
+<form class="form-horizontal" role="form">
+	<div class="form-group">
+		<%= f.label :email, class: 'col-sm-2 control-label' %>
+		<div class="input-group">
+			<%= f.text_field :email, size: 80, required: true, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :name, class: 'col-sm-2 control-label' %>
+		<div class="input-group">
+			<%= f.text_field :name, size: 80, required: true, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :password, class: 'col-sm-2 control-label' %>
+		<div class="input-group">
+			<%= f.password_field :password, size: 80, required: true, class: 'form-control' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :password_confirmation, "Confirm Password", class: 'col-sm-2 control-label' %>
+		<div class="input-group">
+			<%= f.password_field :password_confirmation, required: true, size: 80, class: 'form-control' %>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<div class="btn-group">
+			<% if @user.new_record? %>
+				<%= f.submit "Create Account", class: "btn btn-lg btn-primary" %>
+			<% else %>
+				<%= f.submit "Update Account", class: "btn btn-lg btn-primary" %>
+			<% end %>
+		</div>
+	</div>
+
+</form>
+<% end %>

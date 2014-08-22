@@ -1,9 +1,12 @@
 <div>
 	<h3><%= pluralize(@projects.size, 'Project') %></h3>
 </div>
+
+<% if current_user_admin? %>
 <div>
 	<h4><%= link_to 'Add New Project', new_project_path, class: 'btn btn-primary' %></h4>
 </div>
+<% end %>
 
 <% @projects.each do |project| %>
 <div class="media" id="<%= raw(project.id) %>">
@@ -14,7 +17,7 @@
 		<h2><%= link_to "#{project.name}", project_path(project) %></h2>
 		<div>
 			<div>Target <%= number_to_currency(project.target_pledge_amount) %>, ends on <%= project.pledging_ends_on %> (<%= format_pledging_ends_on(project) %>) </div>
-			<div>Website: <%= link_to "#{project.website}", project.website, target: '_blank' %></div>
+			<div><%= format_successful(project) %></div>
 			<div>Created <%= project.created_at %> / Updated <%= project.updated_at %></div>
 			<div>
 				<p><%= truncate(project.description, length: 160, separator: ' ') { link_to "Continue Reading..", project } %></p>

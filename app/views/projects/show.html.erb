@@ -1,21 +1,20 @@
 <div>
 	<ul class="pager">
 		<li class="previous"><%= link_to raw("&larr; Back to Index"), projects_path %></li>
-		<li class="previous"><%= link_to "Edit", edit_project_path(@project) %></li>
-		<li class="previous"><%= link_to "Delete", project_path(@project),
-													method: :delete,
-													data: { confirm: "Are you sure?" } %></li>
+		
+		<% if current_user_admin? %>
+			<li class="previous"><%= link_to "Edit", edit_project_path(@project) %></li>
+			<li class="previous"><%= link_to "Delete", project_path(@project),
+														method: :delete,
+														data: { confirm: "Are you sure?" } %></li>
+		<% end %>
 </div>
 
 <article class="project">
 <div class="page-header"><h2><%= @project.name %></h2></div>
 <div><%= image_for(@project) %></div> 
 
-<% if @project.project_successful? %>
-<div>Successful!</div>
-<% else %>
-<div>Not yet!</div>
-<% end %>
+<%= format_successful(@project) %>
 
 <div><%= number_to_percentage(@project.rate, precision: 2)%></div>
 

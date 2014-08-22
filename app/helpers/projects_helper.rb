@@ -12,5 +12,13 @@ module ProjectsHelper
 	project.image.exists? ? image_tag(project.image.url(:small)) : image_tag('placeholder.png', height: '90', alt: 'No Image')
 	end
 
+	def format_successful(project)
+		if project.project_successful?
+			content_tag(:span, "Project Success!", class: "label label-success")
+		else
+			content_tag(:span, "#{number_to_percentage(project.rate, precision: 2)}", class: "label label-default")
+		end
+	end
+
 
 end

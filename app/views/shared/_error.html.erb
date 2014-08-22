@@ -1,0 +1,12 @@
+<% if object.errors.any? %>
+	<div class="bg-danger" style="width:520px; padding: 30px 0; margin-bottom:40px;">
+		<header>
+			<h4 style="color:red">There are <%= pluralize(object.errors.size, 'error') %></h4>
+		</header>
+		<ul>
+			<% object.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
