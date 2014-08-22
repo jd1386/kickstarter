@@ -1,11 +1,23 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.2'
 # Use sqlite3 as the database for Active Record
 group :development, :test do
 	gem 'sqlite3'
+end
+
+group :development do
+	# Use Faker to populate fake database
+	gem 'faker', '~> 1.4.2'
+
+	# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+	gem 'spring'
+	#
+	gem 'better_errors'
+	gem 'binding_of_caller'
+	#
 end
 
 group :production do
@@ -35,15 +47,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
-
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
-
-# Use Faker to populate fake database
-gem 'faker', '~> 1.4.2',	group: :development
-
-# paperclip-dropbox for image processing, uploads, and storage
-# gem 'paperclip-dropbox', '~> 1.2.2'
 
 gem 'paperclip'
 gem 'aws-sdk'
