@@ -18,6 +18,7 @@ group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
 	#
+	gem 'debugger'
 end
 
 group :production do
@@ -65,7 +66,4 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-# Use debugger
-gem 'debugger', group: [:development, :test]
 
