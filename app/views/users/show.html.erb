@@ -11,7 +11,7 @@
 	<div><%= @user.name %>'s pledges: <%= @pledges.size %></div>
 
 	<% @pledges.each do |p| %>
-		<div><%= link_to p.comment, p.project %>, created <%= time_ago_in_words(p.created_at) %> ago</div>
+		<div><%= link_to p.comment, p.project, id: "pledge-#{p.id}" %>, created <%= time_ago_in_words(p.created_at) %> ago</div>
 	<% end %>
 
 

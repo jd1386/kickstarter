@@ -6,7 +6,7 @@
 	<article class="pledge">
 		<div><%= link_to p.user.name, p.user %> (<%= p.user.email %>) made a pledge of 
 			<%= number_to_currency(p.amount) %></div>
-		<div style="padding-left:15px"><i>"<%= p.comment %>"</i> - <%= p.created_at %></div>
+		<div style="padding-left:15px" id="pledge-<%= p.id %>"><i>"<%= p.comment %>"</i> - <%= p.created_at %></div>
 	</article>
 	<% end %>
 	<hr>
