@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :pledges, dependent: :destroy
+
   has_secure_password
 
   validates :name, presence: true

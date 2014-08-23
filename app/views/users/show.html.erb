@@ -8,6 +8,13 @@
 		<p>Member since: <%= @user.created_at.strftime('%B %Y') %></p>
 	</div>
 
+	<div><%= @user.name %>'s pledges: <%= @pledges.size %></div>
+
+	<% @pledges.each do |p| %>
+		<div><%= link_to p.comment, p.project %>, created <%= time_ago_in_words(p.created_at) %> ago</div>
+	<% end %>
+
+
 <% if current_user?(@user) %>
 	<footer>
 		<nav>

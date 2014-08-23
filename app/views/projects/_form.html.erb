@@ -1,6 +1,7 @@
 <%= form_for @project, :html => { :multipart => true } do |f| %>
 
 <form class="form-horizontal" role="form">
+	<%= render 'shared/error', object: @project %>
 	<div class="form-group">
 		<%= f.label :name, class: 'col-sm-2 control-label' %>
 		<div class="input-group">

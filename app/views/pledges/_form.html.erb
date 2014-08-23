@@ -1,20 +1,9 @@
+
 <%= form_for [@project, @pledge] do |f| %>
 
 <form class="form-horizontal" role="form">
-	<div class="form-group">
-		<%= f.label :name, class: 'col-sm-2 control-label' %>
-		<div class="input-group">
-			<%= f.text_field :name, size: 80, class: 'form-control' %>
-		</div>
-	</div>
 
 
-	<div class="form-group">	
-		<%= f.label :email, class: 'col-sm-2 control-label' %>
-		<div class="input-group" style="max-width:400px">
-			<%= f.text_field :email, class: 'form-control' %>
-		</div>
-	</div>
 
 	<div class="form-group">
 	<%= f.label :amount, class: 'col-sm-2 control-label' %>

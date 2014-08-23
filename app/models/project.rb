@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+has_many :pledges
 
 validates :name, :description, presence: true
 
@@ -12,7 +13,6 @@ validates_attachment :image,
   :content_type => { :content_type => ['image/jpeg', 'image/png'] },
   :size => { :less_than => 5.megabyte }
 
-has_many :pledges
 
 ##################
 

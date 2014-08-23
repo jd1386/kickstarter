@@ -48,9 +48,13 @@
 </div>
 </article>
 
-<% if @pledges.any? %>
- <%= render 'pledges/index_embedded' %>
+<% if current_user %>
+	<% if @pledges.any? %>
+	 <%= render 'pledges/index_embedded' %>
+	<% else %>
+	 <%= "There're no pledges yet." %>
+	 	<%= render 'pledges/form' %>
+	<% end %>
 <% else %>
- <%= "There're no pledges yet." %>
- 	<%= render 'pledges/form' %>
-<% end %>
+ <div>You need to be signed in to view pledges. <%= link_to 'Sign in here', signin_path %></div>
+ <% end %>
