@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :pledges, dependent: :destroy
+	has_many :favorites, dependent: :destroy
+	has_many :favorite_projects, through: :favorites, source: :project
 
   has_secure_password
 

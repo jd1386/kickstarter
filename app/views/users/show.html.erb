@@ -8,6 +8,16 @@
 		<p>Member since: <%= @user.created_at.strftime('%B %Y') %></p>
 	</div>
 
+	<% if @favorite_projects.any?  %>
+	<div> <%= @user.name %>'s favorite projects: <%= @favorite_projects.size %>
+		<% @favorite_projects.each do |project| %>
+			<div>
+				<%= link_to project.name, project %>
+			</div>
+		<% end %>
+	</div>
+	<% end %>
+
 	<div><%= @user.name %>'s pledges: <%= @pledges.size %></div>
 
 	<% @pledges.each do |p| %>

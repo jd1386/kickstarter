@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   resource :session
   	get '/signin', to: 'sessions#new', as: 'signin'
 
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :projects do
   	resources :pledges
+    resources :favorites
 	end
 	
 end

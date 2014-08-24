@@ -12,6 +12,11 @@ def show
 	@project = Project.find(params[:id])
 	@pledges = @project.pledges.order("created_at desc")
 	@pledge = @project.pledges.new
+	@fans = @project.fans.order("created_at desc")
+
+	if current_user
+		@has_favorites = current_user.favorites.find_by(project_id: @project.id)
+	end
 end
 
 def new

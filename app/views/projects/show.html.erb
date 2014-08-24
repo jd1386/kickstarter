@@ -31,6 +31,27 @@
 	</div>
 </div>
 <div>
+	<h4>Fans: <%= pluralize(@project.fans.size, 'fan') %></h4>
+	<% if @project.fans.any? %>
+	<% @project.fans.each do |fan| %>
+	<div>
+		<%= link_to fan.name, fan %>
+	</div>
+	<% end %>
+	<% end %>
+</div>
+
+<div>
+<% if current_user %>
+	<% if @has_favorites %>
+		<%= button_to "Remove from Favorites", project_favorite_path(@project, @has_favorites), method: :delete, class: 'btn btn-warning' %>
+	<% else %>
+		<%= button_to "Add to Favorites", project_favorites_path(@project), class: 'btn btn-success' %>
+	<% end %>
+<% end %>
+</div>
+
+<div>
 	<h4>Website:</h4>
 	<div>
 		<%= link_to "#{@project.website}", @project.website, target: '_blank' %>

@@ -1,5 +1,7 @@
 class Project < ActiveRecord::Base
-has_many :pledges
+has_many :pledges, dependent: :destroy
+has_many :favorites, dependent: :destroy
+has_many :fans, through: :favorites, source: :user
 
 validates :name, :description, presence: true
 
