@@ -16,8 +16,7 @@ def destroy
 end
 
 def index
-	@user = current_user
-	@favorite_projects = @user.favorite_projects
+	@favorite_projects = current_user.favorite_projects
 end
 
 
