@@ -15,7 +15,7 @@ def show
 	@fans = @project.fans.order("created_at desc")
 
 	if current_user
-		@has_favorites = current_user.favorites.find_by(project_id: @project.id)
+		@has_favorited = current_user.favorites.find_by(project_id: @project.id)
 	end
 end
 

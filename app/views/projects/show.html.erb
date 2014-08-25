@@ -43,8 +43,8 @@
 
 <div>
 <% if current_user %>
-	<% if @has_favorites %>
-		<%= button_to "Remove from Favorites", project_favorite_path(@project, @has_favorites), method: :delete, class: 'btn btn-warning' %>
+	<% if @has_favorited %>
+		<%= button_to "Remove from Favorites", project_favorite_path(@project, @has_favorited), method: :delete, class: 'btn btn-warning' %>
 	<% else %>
 		<%= button_to "Add to Favorites", project_favorites_path(@project), class: 'btn btn-success' %>
 	<% end %>
