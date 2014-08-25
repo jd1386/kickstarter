@@ -51,6 +51,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+# Use paperclip to upload, store images and aws-sdk to store them on Amazon
 gem 'paperclip'
 gem 'aws-sdk'
 
