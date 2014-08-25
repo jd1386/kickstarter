@@ -10,72 +10,89 @@
 		<% end %>
 </div>
 
-<article class="project">
-<div class="page-header"><h2><%= @project.name %></h2></div>
-<div><%= image_for(@project) %></div> 
-
-<%= format_successful(@project) %>
-
-<div><%= number_to_percentage(@project.rate, precision: 2)%></div>
-
-<div>
-	<h4>Target Pledge Amount: </h4>
-	<div><%= number_to_currency(@project.target_pledge_amount) %>
-	</div>
-</div>
-<div>
-	<h4>Pledging Ends:</h4>
-	<div>
-		<%= @project.pledging_ends_on %>
-		<span>(<%= format_pledging_ends_on(@project) %>)</span>
-	</div>
-</div>
-<div>
-	<h4>Fans: <%= pluralize(@project.fans.size, 'fan') %></h4>
-	<% if @project.fans.any? %>
-	<% @project.fans.each do |fan| %>
-	<div>
-		<%= link_to fan.name, fan %>
-	</div>
-	<% end %>
-	<% end %>
+<div class="header">
+	<h1><%= @project.name %></h1>
+	<h4>by <%= @project.team_members %></h4>
 </div>
 
-<div>
-<% if current_user %>
-	<% if @has_favorited %>
-		<%= button_to "Remove from Favorites", project_favorite_path(@project, @has_favorited), method: :delete, class: 'btn btn-warning' %>
-	<% else %>
-		<%= button_to "Add to Favorites", project_favorites_path(@project), class: 'btn btn-success' %>
-	<% end %>
-<% end %>
+<div class="container-border'">
+	<div class="row">
+		<div class="col-md-8">
+			<%= image_for(@project) %>
+			<hr>
+		<div class="row">
+			<%= @project.description.html_safe %>
+		</div>
+		</div> <!-- end col-md-8 -->
+		<div class="col-md-4">
+			<div class="row">
+				<strong>
+					<h1><%= format_successful(@project) %></h1>
+				</strong>
+			</div>
+
+			<div class="row">
+				<strong>
+					<h1><%= number_to_currency(@project.target_pledge_amount) %>
+					</h1>
+					Total
+				</strong>
+			</div>
+
+			<div class="row">
+				<strong>
+					<h1>
+						<%= format_pledging_ends_on(@project) %>
+					</h1>
+				</strong>
+			</div>
+
+
+			<div class="row">
+				<strong>
+					<h1><%= pluralize(@project.fans.size, 'fan') %></h1>
+						<% if @project.fans.any? %>
+							<% @project.fans.each do |fan| %>
+								<%= link_to fan.name, fan %>
+							<% end %>
+						<% end %>
+				</strong>	
+			</div>
+
+			<div class="row">
+				<strong>
+					<% if current_user %>
+						<% if @has_favorited %>
+							<%= button_to "Remove from Favorites", project_favorite_path(@project, @has_favorited), method: :delete, class: 'btn btn-warning' %>
+						<% else %>
+							<%= button_to "Add to Favorites", project_favorites_path(@project), class: 'btn btn-success' %>
+						<% end %>
+					<% end %>
+			</div>
+
+			<div class="row">
+				<strong>
+					<h1>Website</h1>
+						<%= link_to "#{@project.website}", @project.website, target: '_blank' %>
+				</strong>
+			</div>
+
+			<div class="row">
+				<% if current_user %>
+					<% if @pledges.any? %>
+						<%= render 'pledges/index_embedded' %>
+					<% else %>
+					 <%= "There're no pledges yet." %>
+					 <%= render 'pledges/form' %>
+					<% end %>
+				<% else %>
+				 <div>You need to be signed in to view pledges. <%= link_to 'Sign in here', signin_path %></div>
+				<% end %>
+			</div>
+		</div>
+	
+</div>
 </div>
 
-<div>
-	<h4>Website:</h4>
-	<div>
-		<%= link_to "#{@project.website}", @project.website, target: '_blank' %>
-	</div>
-</div>
-<div>
-	<h4>Description</h4>
-	<div><%= @project.description.html_safe %>
-</div>
-<div>
-	<h4>Team Members:</h4>
-	<div>
-		<%= @project.team_members %>
-	</div>
-</div>
-</article>
 
-<% if current_user %>
-	<% if @pledges.any? %>
-	 <%= render 'pledges/index_embedded' %>
-	<% else %>
-	 <%= "There're no pledges yet." %>
-	 	<%= render 'pledges/form' %>
-	<% end %>
-<% else %>
- <div>You need to be signed in to view pledges. <%= link_to 'Sign in here', signin_path %></div>
- <% end %>
+

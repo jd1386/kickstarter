@@ -2,7 +2,7 @@ module ProjectsHelper
 
 	def format_pledging_ends_on(project)
 		if  Time.now < project.pledging_ends_on
-			distance_of_time_in_words(Time.now, project.pledging_ends_on, include_seconds: true) + " remaining"
+			distance_of_time_in_words(Time.now, project.pledging_ends_on, include_seconds: true) + " to go"
 		else
 			content_tag(:strong, "Expired")
 		end

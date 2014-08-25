@@ -1,0 +1,13 @@
+<header><h2>My Favorites</h2></header>
+
+<% if @favorite_projects.any?  %>
+	<div> <%= current_user.name %>'s favorite projects: <%= @favorite_projects.size %>
+		<% @favorite_projects.each do |project| %>
+			<div>
+				<%= link_to project.name, project %>
+			</div>
+		<% end %>
+	</div>
+<% else %>
+	<div><p>There are no favorites saved.</p></div>
+	<% end %>

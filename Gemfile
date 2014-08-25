@@ -25,6 +25,9 @@ group :production do
 	gem 'pg'
 	# Use unicorn as the app server
 	gem 'unicorn'
+	# Use rails_12factor gem to enable all platform features, as advised from Heroku
+	gem 'rails_12factor'
+
 end
 	
 # Use SCSS for stylesheets
@@ -56,16 +59,9 @@ gem 'paperclip'
 gem 'aws-sdk'
 
 # Use thin to disable error message from webrick
-gem 'thin'
+# gem 'thin'
 
-# Use rails_12factor gem to enable all platform features, as advised from Heroku
-gem 'rails_12factor'
+
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
-
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-

@@ -1,6 +1,5 @@
-<div>
-	<h3><%= pluralize(@projects.size, 'Project') %></h3>
-</div>
+<h3><%= pluralize(@projects.size, 'project') %> available</h3>
+
 
 <% if current_user_admin? %>
 <div>
@@ -8,22 +7,32 @@
 </div>
 <% end %>
 
+<div class="row">
 <% @projects.each do |project| %>
-<div class="media" id="<%= raw(project.id) %>">
-	<a class="pull-left" href="#">
-		<div class="media-object"><%= image_for(project) %></div> 
-	</a>
-	<div class="media-body">
-		<h2><%= link_to "#{project.name}", project_path(project) %></h2>
-		<div>
-			<div>Target <%= number_to_currency(project.target_pledge_amount) %>, ends on <%= project.pledging_ends_on %> (<%= format_pledging_ends_on(project) %>) </div>
-			<div><%= format_successful(project) %></div>
-			<div>Created <%= project.created_at %> / Updated <%= project.updated_at %></div>
-			<div>
+<div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+			<%= link_to image_for(project), project %> 
+			<div class="caption">
+				<h5><%= link_to project.name, project %></h5>
 				<p><%= truncate(project.description, length: 160, separator: ' ') { link_to "Continue Reading..", project } %></p>
-			</div>
+				<%= render 'shared/progress_bar', object: project.rate %>
+			
+
+		<div class="info-box">
+			<ul>
+				<li>
+					<span><%= format_successful(project) %></span><br>
+					<span>Funded</span>
+				</li>
+				<li>
+					<span>Goal</span><br>
+					<span><%= number_to_currency(project.target_pledge_amount) %></span>
+				</li>
+				<li><span><%= format_pledging_ends_on(project) %></span></li>
+			</ul>
 		</div>
 	</div>
 </div>
-<hr></hr>
+</div>
 <% end %>
+</div>
