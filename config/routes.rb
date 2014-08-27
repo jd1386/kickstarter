@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 		
 
-  root "projects#index"
+  root "categories#index"
 
   resources :projects do
   	resources :pledges
