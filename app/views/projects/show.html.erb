@@ -1,6 +1,6 @@
 <div>
 	<ul class="pager">
-		<li class="previous"><%= link_to raw("&larr; Back to Index"), projects_path %></li>
+		<li class="previous"><%= link_to raw("&larr; Back to Index"), :back %></li>
 		
 		<% if current_user_admin? %>
 			<li class="previous"><%= link_to "Edit", edit_project_path(@project) %></li>
@@ -17,20 +17,22 @@
 
 <div class="container-border'">
 	<div class="row">
-		<div class="col-md-8">
-			<%= image_for(@project) %>
+		<div class="col-md-7">
+			<div class="main-image">
+				<%= image_for(@project) %>
+			</div>
 			<hr>
 		<div class="row">
 			<%= @project.description.html_safe %>
 		</div>
 		</div> <!-- end col-md-8 -->
-		<div class="col-md-4">
+		<div class="col-md-5">
 			<div class="row">
 				<strong>
 					<h1><%= format_successful(@project) %></h1>
 				</strong>
 			</div>
-		<hr>
+			<hr>
 			<div class="row">
 				<strong>
 					<h1><%= number_to_currency(@project.target_pledge_amount) %>

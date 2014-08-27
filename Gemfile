@@ -55,7 +55,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use paperclip to upload, store images and aws-sdk to store them on Amazon
-gem 'paperclip'
+gem 'paperclip', "~> 4.1"
 gem 'aws-sdk'
 
 # Use thin to disable error message from webrick

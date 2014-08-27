@@ -1,9 +1,12 @@
-<h1>Choose Category</h1>
+<h1 style="text-align:center">Explore an inspiring universe</h1>
 
-<ul>
 <% @categories.each do |category| %>
-	<li><%= link_to category.name, category_path(category) %> (<%= pluralize(category.projects.count, 'project') %> listed)</li>
-
+<div class="col-md-4">
+	<div class="category-listing">
+		<h2>
+			<%= link_to category.name, category_path(category) %> (<%= category.projects.count %>) 
+		</h2>
+	</div>
+</div>
 
 <% end %>
-</ul>
