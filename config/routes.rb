@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   	resources :pledges
     resources :favorites
 	end
+
+  resources :admin
 	
 end
