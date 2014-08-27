@@ -8,8 +8,10 @@ def create
 
 	if @pledge.save
 		redirect_to @project
+		flash[:success] = "Thanks for your pledge!"
 	else
-		render :new
+		render :edit
+		flash[:warning] = "Oops, something happened."
 	end
 end
 

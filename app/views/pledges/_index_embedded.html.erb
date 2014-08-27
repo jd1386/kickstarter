@@ -4,7 +4,7 @@
 	</h3>
 	<% @pledges.each do |p| %>
 	<article class="pledge">
-		<div><%= link_to p.user.name, p.user %> (<%= p.user.email %>) made a pledge of 
+		<div><%= link_to p.user.name, p.user %> made a pledge of 
 			<%= number_to_currency(p.amount) %></div>
 		<div style="padding-left:15px" id="pledge-<%= p.id %>"><i>"<%= p.comment %>"</i> - <%= p.created_at %></div>
 	</article>

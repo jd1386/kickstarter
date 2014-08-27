@@ -10,6 +10,7 @@ end
 
 def show
 	@project = Project.find(params[:id])
+	@categories = @project.categories.order("id")
 	@pledges = @project.pledges.order("created_at desc")
 	@pledge = @project.pledges.new
 	@fans = @project.fans.order("created_at desc")
@@ -58,7 +59,7 @@ end
 private
 
 	def project_params
-		params.require(:project).permit(:name, :description, :target_pledge_amount, :website, :pledging_ends_on, :team_members, :image)
+		params.require(:project).permit(:name, :description, :target_pledge_amount, :website, :pledging_ends_on, :team_members, :image, category_ids: [])
 	end
 		
 

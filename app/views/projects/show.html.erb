@@ -30,7 +30,7 @@
 					<h1><%= format_successful(@project) %></h1>
 				</strong>
 			</div>
-
+		<hr>
 			<div class="row">
 				<strong>
 					<h1><%= number_to_currency(@project.target_pledge_amount) %>
@@ -38,7 +38,7 @@
 					Total
 				</strong>
 			</div>
-
+		<hr>
 			<div class="row">
 				<strong>
 					<h1>
@@ -46,11 +46,24 @@
 					</h1>
 				</strong>
 			</div>
-
-
+		<hr>
+		<div class="row">
+				<strong>
+					<h3>Website</h3>
+						<%= link_to "#{@project.website}", @project.website, target: '_blank' %>
+				</strong>
+			</div>
+			<hr>
+			<div class="row">
+				<strong><h3>Category</h3></strong>
+				<% @categories.each do |category| %>
+					<h4><%= link_to category.name, '' %></h4>
+				<% end %>
+			</div>
+			<hr>
 			<div class="row">
 				<strong>
-					<h1><%= pluralize(@project.fans.size, 'fan') %></h1>
+					<h3><%= pluralize(@project.fans.size, 'fan') %></h3>
 						<% if @project.fans.any? %>
 							<% @project.fans.each do |fan| %>
 								<%= link_to fan.name, fan %>
@@ -63,18 +76,11 @@
 				<strong>
 					<% if current_user %>
 						<% if @has_favorited %>
-							<%= button_to "Remove from Favorites", project_favorite_path(@project, @has_favorited), method: :delete, class: 'btn btn-warning' %>
+							<%= button_to "Remove from Favorites", project_favorite_path(@project, @has_favorited), method: :delete, class: 'btn btn-default' %>
 						<% else %>
-							<%= button_to "Add to Favorites", project_favorites_path(@project), class: 'btn btn-success' %>
+							<%= button_to "Add to Favorites", project_favorites_path(@project), class: 'btn btn-primary' %>
 						<% end %>
 					<% end %>
-			</div>
-
-			<div class="row">
-				<strong>
-					<h1>Website</h1>
-						<%= link_to "#{@project.website}", @project.website, target: '_blank' %>
-				</strong>
 			</div>
 
 			<div class="row">

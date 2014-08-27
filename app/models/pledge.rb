@@ -5,7 +5,6 @@ class Pledge < ActiveRecord::Base
   AMOUNTS = [25, 50, 100, 250, 500]
 
   validates :amount, presence: true
-  validates :comment, length: { minimum: 4 }
   validates :amount, inclusion: { in: AMOUNTS }
 
 

@@ -14,9 +14,9 @@ module ProjectsHelper
 
 	def format_successful(project)
 		if project.project_successful?
-			content_tag(:span, "Project Success!", class: "label label-success")
+			content_tag(:span, "Success!", class: "label label-success")
 		else
-			content_tag(:span, "#{number_to_percentage(project.rate, precision: 2)}", class: "label label-default")
+			content_tag(:span, "#{number_to_percentage(project.rate, precision: 2)} funded")
 		end
 	end
 
