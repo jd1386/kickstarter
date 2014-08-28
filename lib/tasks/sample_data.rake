@@ -12,7 +12,8 @@ def make_admin_user
 		name: "Jungdo Lee",
 		email: "lee.jungdo@gmail.com",
 		password: "foobar",
-		password_confirmation: "foobar"
+		password_confirmation: "foobar",
+		admin: true
 		)
 	
 end

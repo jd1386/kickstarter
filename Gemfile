@@ -58,10 +58,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'paperclip', "~> 4.1"
 gem 'aws-sdk'
 
-# Use thin to disable error message from webrick
-# gem 'thin'
-
-
-
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
+# Use TinyMCE to enable richer text editing experience
+gem 'tinymce-rails'
