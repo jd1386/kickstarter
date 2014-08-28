@@ -8,13 +8,15 @@ namespace :db do
 end
 
 def make_admin_user
-	User.create!(
-		name: "Jungdo Lee",
-		email: "lee.jungdo@gmail.com",
-		password: "foobar",
-		password_confirmation: "foobar",
-		admin: true
-		)
+	if User.count == 0
+		User.create!(
+			name: "Jungdo Lee",
+			email: "lee.jungdo@gmail.com",
+			password: "foobar",
+			password_confirmation: "foobar",
+			admin: true
+			)
+	end
 	
 end
 
