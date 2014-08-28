@@ -31,7 +31,7 @@ def make_projects
 		pledging_ends_on = 10.days.from_now
 		team_member_1 = Faker::Name.name
 		team_member_2 = Faker::Name.name
-		category = rand(1..10)
+		category = rand(1..9)
 		
 
 		Project.create!(

@@ -20,8 +20,7 @@ categories = Category.create([
 	{ name: 'Music'},
 	{ name: 'Photography'},
 	{ name: 'Publishing'},
-	{ name: 'Technology'},
-	{ name: 'Theater'}
+	{ name: 'Technology'}
 ]),
 
 project = Project.create([
