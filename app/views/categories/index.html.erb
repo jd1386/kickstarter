@@ -2,11 +2,11 @@
 
 <% @categories.each do |category| %>
 <div class="col-md-4">
-
+	<div class="category-listing">
 		<h2>
-			<%= link_to category.name, category_path(category), class: 'category-listing' %> (<%= category.projects.count %>) 
+			<%= link_to category.name, category_path(category) %> (<%= category.projects.count %>) 
 		</h2>
-
+	</div>
 </div>
 
 <% end %>
