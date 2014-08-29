@@ -67,6 +67,7 @@
 			<div class="row">
 				<strong><h3>Creator</h3></strong>
 				<h4><%= link_to @user.name, user_path(@user) %></h4>
+				<p><%= truncate(@user.profile, length: 160, separator: ' ') { link_to "Continue Reading..", @user} %>
 			</div>
 			<hr>
 			<div class="row">
