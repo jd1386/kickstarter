@@ -31,23 +31,17 @@
 		</div>
 	</div>
 
-
-	<div class="form-group">
-		<div class="btn-group">
-			<%= f.submit 'Pledge Now!', class: "btn btn-lg btn-success" %>
-		</div>
-	</div>
-
-</form>
-<% end %>
-<!-- end form -->
       </div> <!-- end modal body -->
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes
-        </button>
+        <%= f.submit 'Pledge Now', class: 'btn btn-primary' %>
       </div>
+
+   </form>
+<% end %>
+<!-- end form -->
+
     </div>
   </div>
 </div>
