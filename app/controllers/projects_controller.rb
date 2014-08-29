@@ -61,7 +61,7 @@ end
 private
 
 	def project_params
-		params.require(:project).permit(:name, :description, :target_pledge_amount, :website, :pledging_ends_on, :team_members, :image, category_ids: [])
+		params.require(:project).permit(:name, :description, :target_pledge_amount, :website, :pledging_ends_on, :image, category_ids: [])
 	end
 	
 	def check_project_owner

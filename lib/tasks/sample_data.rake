@@ -2,8 +2,9 @@ namespace :db do
 	desc "Fill database with sample data"
 	task populate: :environment do
 		make_admin_user
+		make_users
 		make_projects
-	#	make_pledges
+		make_pledges
 	end
 end
 
@@ -14,10 +15,30 @@ def make_admin_user
 			email: "lee.jungdo@gmail.com",
 			password: "foobar",
 			password_confirmation: "foobar",
+			profile: Faker::Lorem.sentence(5),
 			admin: true
 			)
 	end
 	
+end
+
+
+def make_users
+	10.times do |n|
+		name = Faker::Name.name
+		email = "example_user_#{n}@gmail.com"
+		password = "foobar"
+		password_confirmation = "foobar"
+		profile = Faker::Lorem.sentence(20)
+
+		User.create!(
+			name: name,
+			email: email,
+			password: password,
+			password_confirmation: password_confirmation,
+			profile: profile
+			)
+		end
 end
 
 
@@ -29,9 +50,8 @@ def make_projects
 		target_pledge_amount = Faker::Number.number(4)
 		website = "http://www.orights.com"
 		pledging_ends_on = 10.days.from_now
-		team_member_1 = Faker::Name.name
-		team_member_2 = Faker::Name.name
 		category = rand(1..9)
+		user_id = rand(1..10)
 		
 
 		Project.create!(
@@ -40,25 +60,24 @@ def make_projects
 			target_pledge_amount: target_pledge_amount,
 			website: website,
 			pledging_ends_on: pledging_ends_on,
-			team_members: team_member_1 + " , " + team_member_2,
-			category_ids: category
-
+			category_ids: category,
+			user_id: user_id
 			)
 		end
 	end
 
 	def make_pledges
-		5.times do |n|
+		10.times do |n|
 			amount = Faker::Number.number(2)
 			comment = Faker::Lorem.sentence(3)
-			project_id = 1
-			user_id = 1
+			project_id = rand(1..10)
+			user_id = rand(1..10)
 
 			Pledge.create!(
 				user_id: user_id,
 				comment: comment,
 				project_id: project_id,
-				amount: amount
+				amount: 50
 
 				)
 		end
