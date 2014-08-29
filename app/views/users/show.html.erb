@@ -1,56 +1,76 @@
 <% content_for(:title, @user.name) %>
 
-<div class="header">
-	<h1><%= @user.name %></h1>
+
+<div class="user-page-header">
+	<div class="col-md-3">
+			<%= gravatar_for(@user) %>
+	</div>
+	<div class="col-md-9">
+		<h1><%= @user.name %></h1>
+		<p>Backed <%= pluralize(@pledges.count, 'project') %> · Joined <%= @user.created_at.strftime('%B %Y') %></p>
+		<p><%= @user.profile %></p>
+	</div>
 </div>
 	
-	<div>
-		<p><%= @user.profile %></p>
-		<p><i>Member since: <%= @user.created_at.strftime('%B %Y') %></i></p>
-	</div>
+<div class="user-page-body">
 
-	<hr>
-	<h3> CREATED <%= @projects.size %>
-	<% if @projects.any? %>
-		<% @projects.each do |project| %>
-		<div>
-			<%= link_to project.name, project %>
-		</div>
+<ul class="nav nav-tabs" role="tablist" id="myTab">
+  <li><a href="#backed" role="tab" data-toggle="tab"><span class="badge pull-right"><%= @pledges.size %></span>Backed</a></li>
+  <li><a href="#created" role="tab" data-toggle="tab"><span class="badge pull-right"><%= @projects.size %></span>Created</a></li>
+  <li><a href="#favorites" role="tab" data-toggle="tab"><span class="badge pull-right"><%= @favorite_projects.size %></span>Favorites</a></li>
+</ul>
+
+<div class="tab-content">
+  
+  <div class="tab-pane" id="backed">
+  	<% if @pledges.any? %>
+			<% @pledges.each do |p| %>
+				<div><%= link_to p.project.name, p.project, id: "pledge-#{p.id}" %>, <%= time_ago_in_words(p.created_at) %> ago</div>
+			<% end %>	
+		<% else %>
+			<p>There are no backed projects.</p>
 		<% end %>
-	<% end %>
-
-	<hr>
-
-	<h3>FAVORITES <%= @favorite_projects.size %> </h3>
-	<% if @favorite_projects.any?  %>
-		<% @favorite_projects.each do |project| %>
+  </div>
+  <div class="tab-pane" id="created">
+  	<% if @projects.any? %>
+			<% @projects.each do |project| %>
 			<div>
 				<%= link_to project.name, project %>
 			</div>
+			<% end %>
+		<% else %>
+			<p>There are no created projects.</p>
 		<% end %>
-	<% end %>
-
-	<hr>
-
-	<h3>BACKED <%= @pledges.size %></h3>
-	<% if @pledges.any? %>
-		<% @pledges.each do |p| %>
-			<div><%= link_to p.comment, p.project, id: "pledge-#{p.id}" %>, created <%= time_ago_in_words(p.created_at) %> ago</div>
-		<% end %>	
-	<% end %>
-
-	<hr>
+  </div>
+  <div class="tab-pane" id="favorites">
+  	<% if @favorite_projects.any?  %>
+			<% @favorite_projects.each do |project| %>
+				<div>
+					<%= link_to project.name, project %>
+				</div>
+			<% end %>
+		<% else %>
+			<p>There are no favorites saved.</p>
+		<% end %>
+  </div>
+</div>
 
 <% if current_user?(@user) %>
-	<footer>
-		<nav>
-			<%= link_to "Edit Account", edit_user_path(@user), class: 'btn btn-primary' %>
-			<%= link_to 'Delete Account', @user, 
-                method: :delete, 
-                data: { confirm: 'Are you sure you want to permanently delete your account?' },
-                class: 'button' %>
-		</nav>
-	</footer>
-<% end %>
+		<footer style="padding-top:150px;">
+			<nav>
+				<%= link_to "Edit Account", edit_user_path(@user), class: 'btn btn-primary' %>
+				<%= link_to 'Delete Account', @user, 
+	                method: :delete, 
+	                data: { confirm: 'Are you sure you want to permanently delete your account?' },
+	                class: 'button' %>
+			</nav>
+		</footer>
+	<% end %>
 
-</article>
+<script>
+  $(function () {
+    $('#myTab a:first').tab('show')
+  })
+</script>
+
+</div>
