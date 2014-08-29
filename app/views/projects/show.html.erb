@@ -26,14 +26,14 @@
 		<div class="row">
 			<%= @project.description.html_safe %>
 		</div>
-		</div> <!-- end col-md-8 -->
+		</div> <!-- end col-md-7 -->
 		<div class="col-md-5">
 			<div class="row">
 				<strong>
 					<h1><%= format_successful(@project) %></h1>
 				</strong>
 			</div>
-			<hr>
+		<hr>
 			<div class="row">
 				<strong>
 					<h1><%= number_to_currency(@project.target_pledge_amount) %>
@@ -50,22 +50,20 @@
 				</strong>
 			</div>
 		<hr>
-		<div class="row">
+			<div class="row">
 				<strong>
 					<h3>Website</h3>
 						<%= link_to "#{@project.website}", @project.website, target: '_blank' %>
 				</strong>
 			</div>
-			<hr>
+		<hr>
 			<div class="row">
 				<strong><h3>Category</h3></strong>
 				<% @categories.each do |category| %>
 					<h4><%= link_to category.name, category_path(category) %></h4>
 				<% end %>
 			</div>
-
-			<hr>
-
+		<hr>
 			<div class="row">
 				<h3>Creator</h3>
 				<div class="media">
@@ -76,9 +74,7 @@
 					</div>
 				</div>
 			</div>
-
-
-			<hr>
+		<hr>
 			<div class="row">
 				<strong>
 					<h3><%= pluralize(@project.fans.size, 'fan') %></h3>
@@ -89,7 +85,7 @@
 						<% end %>
 				</strong>	
 			</div>
-
+		<hr>
 			<div class="row">
 				<strong>
 					<% if current_user %>
@@ -99,6 +95,7 @@
 							<%= button_to "Add to Favorites", project_favorites_path(@project), class: 'btn btn-primary' %>
 						<% end %>
 					<% end %>
+				</strong>
 			</div>
 
 			<div class="row">
@@ -113,7 +110,15 @@
 				 <div>You need to be signed in to view pledges. <%= link_to 'Sign in here', signin_path %></div>
 				<% end %>
 			</div>
-		</div>
+		
+
+		<div class="row">
+			<!-- Button trigger modal -->
+			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Pledge Now</button>
+		</div>	
+	</div> <!-- end col-md-8 -->
+<!-- Pledge Now Modal -->
+<%= render 'pledges/form' %>
 	
 </div>
 </div>

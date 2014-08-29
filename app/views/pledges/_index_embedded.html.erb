@@ -1,13 +1,15 @@
 	<hr>
-	<h3><%= pluralize(@pledges.size, 'Pledge') %>:
+	<h3><%= pluralize(@pledges.size, 'Backer') %>:
 		<span><%= number_to_currency(@project.total_pledges)%></span>
 	</h3>
 	<% @pledges.each do |p| %>
-	<article class="pledge">
-		<div><%= link_to p.user.name, p.user %> made a pledge of 
-			<%= number_to_currency(p.amount) %></div>
-		<div style="padding-left:15px" id="pledge-<%= p.id %>"><i>"<%= p.comment %>"</i> - <%= p.created_at %></div>
-	</article>
+	<div class="media">
+		<%= gravatar_for(p.user, 50, 'pull-left') %>
+		<div class="media-body">
+			<h4 class="media-heading"><%= link_to p.user.name, p.user %></h4>
+			Pledged <%= number_to_currency(p.amount) %> : 
+			<i><%= p.comment %></i> - <%= p.created_at %>
+		</div>
+	</div>
 	<% end %>
 	<hr>
-	<%= render 'pledges/form' %>
