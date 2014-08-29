@@ -9,31 +9,4 @@
 </div>
 <% end %>
 
-<div class="row">
-<% @projects.each do |project| %>
-<div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-			<%= link_to image_for(project), project %> 
-			<div class="caption">
-				<h5><%= link_to project.name, project %></h5>
-				<p><%= truncate(strip_tags(project.description).html_safe, length: 160, separator: ' ') { link_to "Continue Reading..", project } %></p>
-				<%= render 'shared/progress_bar', object: project.rate %>
-			
-
-		<div class="info-box">
-			<ul>
-				<li>
-					<span><%= format_successful(project) %></span>
-				</li>
-				<li>
-					<span>Goal</span><br>
-					<span><%= number_to_currency(project.target_pledge_amount) %></span>
-				</li>
-				<li><span><%= format_pledging_ends_on(project) %></span></li>
-			</ul>
-		</div>
-	</div>
-</div>
-</div>
-<% end %>
-</div>
+<%= render 'projects/thumbnails_large' %>

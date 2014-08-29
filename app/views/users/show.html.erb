@@ -7,7 +7,7 @@
 	</div>
 	<div class="col-md-9">
 		<h1><%= @user.name %></h1>
-		<p>Backed <%= pluralize(@pledges.count, 'project') %> · Joined <%= @user.created_at.strftime('%B %Y') %></p>
+		<p>Backed <%= pluralize(@backed_projects.count, 'project') %> · Joined <%= @user.created_at.strftime('%B %Y') %></p>
 		<p><%= @user.profile %></p>
 	</div>
 </div>
@@ -15,7 +15,7 @@
 <div class="user-page-body">
 
 <ul class="nav nav-tabs" role="tablist" id="myTab">
-  <li><a href="#backed" role="tab" data-toggle="tab"><span class="badge pull-right"><%= @pledges.size %></span>Backed</a></li>
+  <li><a href="#backed" role="tab" data-toggle="tab"><span class="badge pull-right"><%= @backed_projects.size %></span>Backed</a></li>
   <li><a href="#created" role="tab" data-toggle="tab"><span class="badge pull-right"><%= @projects.size %></span>Created</a></li>
   <li><a href="#favorites" role="tab" data-toggle="tab"><span class="badge pull-right"><%= @favorite_projects.size %></span>Favorites</a></li>
 </ul>
@@ -23,32 +23,22 @@
 <div class="tab-content">
   
   <div class="tab-pane" id="backed">
-  	<% if @pledges.any? %>
-			<% @pledges.each do |p| %>
-				<div><%= link_to p.project.name, p.project, id: "pledge-#{p.id}" %>, <%= time_ago_in_words(p.created_at) %> ago</div>
-			<% end %>	
+  	<% if @backed_projects.any? %>
+			<%= render 'projects/thumbnails_small', object: @backed_projects %>
 		<% else %>
 			<p>There are no backed projects.</p>
 		<% end %>
   </div>
   <div class="tab-pane" id="created">
   	<% if @projects.any? %>
-			<% @projects.each do |project| %>
-			<div>
-				<%= link_to project.name, project %>
-			</div>
-			<% end %>
+			<%= render 'projects/thumbnails_small', object: @projects %>
 		<% else %>
 			<p>There are no created projects.</p>
 		<% end %>
   </div>
   <div class="tab-pane" id="favorites">
   	<% if @favorite_projects.any?  %>
-			<% @favorite_projects.each do |project| %>
-				<div>
-					<%= link_to project.name, project %>
-				</div>
-			<% end %>
+			<%= render 'projects/thumbnails_small', object: @favorite_projects %>
 		<% else %>
 			<p>There are no favorites saved.</p>
 		<% end %>

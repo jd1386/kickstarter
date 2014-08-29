@@ -10,7 +10,7 @@ end
 def show
 	@user = User.find(params[:id])
 	@projects = @user.projects.order('created_at desc')
-	@pledges = @user.pledges.order('created_at desc')
+	@backed_projects = @user.backed_projects.order('created_at desc')
 	@favorite_projects = @user.favorite_projects.order('created_at desc')
 end
 
