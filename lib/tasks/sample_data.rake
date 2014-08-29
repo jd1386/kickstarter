@@ -9,7 +9,8 @@ namespace :db do
 end
 
 def make_admin_user
-	if User.count == 0
+	u = User.find_by(email: "lee.jungdo@gmail.com")
+	if u == nil
 		User.create!(
 			name: "Jungdo Lee",
 			email: "lee.jungdo@gmail.com",
