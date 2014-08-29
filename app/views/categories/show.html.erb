@@ -1,3 +1,5 @@
+<% content_for(:title, @category.name) %>
+
 <h3><%= @category.name %>: <%= pluralize(@projects.size, 'project') %> available</h3>
 
 

@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
 before_action :require_signin, except: [:index, :show]
-before_action :require_admin, except: [:index, :show]
+before_action :check_project_owner, except: [:index, :show]
 
 def index
 	 @projects = Project.accepting_pledges_only
@@ -11,6 +11,7 @@ end
 def show
 	@project = Project.find(params[:id])
 	@categories = @project.categories.order("id")
+	@user = @project.user
 	@pledges = @project.pledges.order("created_at desc")
 	@pledge = @project.pledges.new
 	@fans = @project.fans.order("created_at desc")
@@ -26,6 +27,7 @@ end
 
 def create
 	@project = Project.new(project_params)
+	@project.user = current_user
 	if @project.save
 		redirect_to @project
 		flash[:success] = "Project successfully created!"
@@ -61,6 +63,9 @@ private
 	def project_params
 		params.require(:project).permit(:name, :description, :target_pledge_amount, :website, :pledging_ends_on, :team_members, :image, category_ids: [])
 	end
-		
+	
+	def check_project_owner
+			current_user?(@user)
+	end	
 
 end

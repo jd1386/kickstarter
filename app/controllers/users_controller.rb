@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-before_action :require_signin, except: [:new, :create]
+before_action :require_signin, only: [:new, :create]
 before_action :require_correct_user, only: [:edit, :update, :destroy]
 
 def index
@@ -9,6 +9,7 @@ end
 
 def show
 	@user = User.find(params[:id])
+	@projects = @user.projects.order('created_at desc')
 	@pledges = @user.pledges.order('created_at desc')
 	@favorite_projects = @user.favorite_projects.order('created_at desc')
 end
@@ -61,7 +62,7 @@ private
 	end
 
 	def user_params
-		params.require(:user).permit(:name, :email, :password, :password_confirmation)
+		params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile)
 	end
 
 end

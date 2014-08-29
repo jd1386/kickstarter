@@ -1,15 +1,28 @@
+<% content_for(:title, @user.name) %>
+
 <div class="header">
 	<h1><%= @user.name %></h1>
 </div>
 	
 	<div>
-		<p>Member since: <%= @user.created_at.strftime('%B %Y') %></p>
+		<p><%= @user.profile %></p>
+		<p><i>Member since: <%= @user.created_at.strftime('%B %Y') %></i></p>
 	</div>
 
 	<hr>
+	<h3> CREATED <%= @projects.size %>
+	<% if @projects.any? %>
+		<% @projects.each do |project| %>
+		<div>
+			<%= link_to project.name, project %>
+		</div>
+		<% end %>
+	<% end %>
 
+	<hr>
+
+	<h3>FAVORITES <%= @favorite_projects.size %> </h3>
 	<% if @favorite_projects.any?  %>
-	<h3> <%= @user.name %>'s favorite projects: <%= @favorite_projects.size %> </h3>
 		<% @favorite_projects.each do |project| %>
 			<div>
 				<%= link_to project.name, project %>
@@ -19,10 +32,11 @@
 
 	<hr>
 
-	<h3><%= @user.name %>'s pledges: <%= @pledges.size %></h3>
-
-	<% @pledges.each do |p| %>
-		<div><%= link_to p.comment, p.project, id: "pledge-#{p.id}" %>, created <%= time_ago_in_words(p.created_at) %> ago</div>
+	<h3>BACKED <%= @pledges.size %></h3>
+	<% if @pledges.any? %>
+		<% @pledges.each do |p| %>
+			<div><%= link_to p.comment, p.project, id: "pledge-#{p.id}" %>, created <%= time_ago_in_words(p.created_at) %> ago</div>
+		<% end %>	
 	<% end %>
 
 	<hr>
