@@ -62,7 +62,7 @@ h5 a {
 
 
 .container .text-muted {
-       margin: 20px 0;
+  margin: 20px 0;
 }
 
 .profile-image {
@@ -121,6 +121,11 @@ h5 a {
     h1 {
     font-size: 48px;
     }
+}
+
+  .created-by {
+    background: #e8f6ff;
+    border-radius: 5px;
   }
 
   .description {
@@ -164,4 +169,11 @@ h5 a {
   .badge.pull-right {
     margin-left: 5px;
   }
+  .badge {
+  background: #969696;
+  }
+  .nav.nav-tabs a {
+    color: #525252;
+  }
 }
+
