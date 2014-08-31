@@ -15,7 +15,7 @@
         <% if current_user %>
           <li><%= link_to 'My Favorites', user_favorites_path(current_user) %></li>
           <% if current_user_admin? %>
-            <li><%= link_to 'Admin', admin_index_path %></li>
+            <li><%= link_to 'Admin', admin_path %></li>
           <% end %>
         <% end %>
       </ul>

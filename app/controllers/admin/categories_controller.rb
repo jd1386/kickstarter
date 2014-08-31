@@ -1,15 +1,7 @@
-class CategoriesController < ApplicationController
-	before_action :require_admin, except: [:index, :show]
+class Admin::CategoriesController < ApplicationController
 
+before_action :require_admin
 
-def index
-	@categories = Category.all
-end
-
-def show
-	@category = Category.find(params[:id])
-	@projects = @category.projects
-end
 
 def index
 	@categories = Category.all
@@ -63,4 +55,3 @@ def category_params
 end
 
 end
-

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root "categories#index"
+
   resources :categories
 
   resource :session
@@ -10,14 +12,14 @@ Rails.application.routes.draw do
     resources :favorites
   end
 		
-
-  root "categories#index"
-
   resources :projects do
   	resources :pledges
     resources :favorites
 	end
 
-  resources :admin
+  namespace :admin do
+    get '/', to: 'dashboard#index', as: '/'
+    resources :projects, :users, :categories
+  end
 	
 end

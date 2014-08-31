@@ -1,0 +1,32 @@
+<h3>Admin: Projects</h3>
+
+
+<table class="table table-striped">
+
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Created by</th>
+			<th>Num Pledges</th>
+			<th>Num Fans</th>
+			<th>Created</th>
+			<th>Admin Action</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<% @projects.each do |project| %>
+			<td><%= project.id %></td>
+			<td><%= link_to project.name, admin_project_path(project) %></td>
+			<td><%= project.user_id %></td>
+			<td><%= project.pledges.count %></td>
+			<td><%= project.fans.count %></td>
+			<td><%= project.created_at %></td>
+			<td>Edit | <%= link_to "Delete", admin_project_path(project), method: :delete, data: { confirm: "Are you sure?" } %></td>
+		</tr>
+
+	</tbody>
+<% end %>
+</table>

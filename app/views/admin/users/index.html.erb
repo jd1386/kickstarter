@@ -1,0 +1,31 @@
+<h3>Admin: Users</h3>
+<hr>
+
+<p>
+	<span><%= link_to 'Back', admin_path %></span> | 
+	<span><%= link_to 'Add New User', new_admin_user_path %></span>
+</p>
+
+<table class="table table-striped">
+
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Created</th>
+			<th>Admin Action</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<% @users.each do |user| %>
+			<td><%= user.id %></td>
+			<td><%= link_to user.name, admin_user_path(user) %></td>
+			<td><%= user.created_at %></td>
+			<td> <%= link_to "Edit", edit_admin_user_path(user) %> | <%= link_to "Delete", admin_user_path(user), method: :delete, data: { confirm: "Are you sure?" } %></td>
+		</tr>
+
+	</tbody>
+<% end %>
+</table>

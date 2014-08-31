@@ -1,0 +1,30 @@
+<h3>Admin: Categories</h3>
+<hr>
+
+<p>
+	<span><%= link_to 'Back', admin_path %></span> | 
+	<span><%= link_to 'Add New Category', new_admin_category_path %></span>
+</p>
+
+<table class="table table-striped">
+
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Project Listed</th>
+			<th>Admin Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<% @categories.each do |category| %>
+			<td><%= category.id %></td>
+			<td><%= category.name %></td>
+			<td><%= category.projects.count %></td>
+			<td><%= link_to "Edit", edit_admin_category_path(category) %> | <%= link_to "Delete", admin_category_path(category), method: :delete, data: { confirm: "Are you sure?" } %></td>
+		</tr>
+	</tbody>
+<% end %>
+</table>

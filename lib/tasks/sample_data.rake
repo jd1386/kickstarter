@@ -25,7 +25,7 @@ end
 
 
 def make_users
-	10.times do |n|
+	50.times do |n|
 		name = Faker::Name.name
 		email = "example_user_#{n}@gmail.com"
 		password = "foobar"
@@ -45,7 +45,7 @@ end
 
 
 def make_projects
-	10.times do |n|
+	100.times do |n|
 		name = Faker::Commerce.product_name + " Project"
 		description = Faker::Lorem.sentence(100)
 		target_pledge_amount = Faker::Number.number(4)
@@ -68,7 +68,7 @@ def make_projects
 	end
 
 	def make_pledges
-		10.times do |n|
+		50.times do |n|
 			amount = Faker::Number.number(2)
 			comment = Faker::Lorem.sentence(3)
 			project_id = rand(1..10)
