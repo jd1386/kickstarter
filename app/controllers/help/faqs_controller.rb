@@ -21,12 +21,24 @@ def create
 end
 
 def edit
+	@faq = Help::Faq.find(params[:id])
 end
 
 def update
+	@faq = Help::Faq.find(params[:id])
+		if @faq.update(faq_params)
+			redirect_to admin_faqs_path
+			flash[:success] = "FAQ successfully updated!"
+		else
+			render :edit
+		end
 end
 
 def destroy
+	@faq = Help::Faq.find(params[:id])
+	@faq.destroy
+	redirect_to admin_faqs_path
+	flash[:success] = "FAQ successfully deleted!"
 end
 
 
