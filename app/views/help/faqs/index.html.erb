@@ -1,0 +1,19 @@
+<h3>FAQ</h3>
+<hr>
+
+<div class="col-md-8">
+  <div class="row">
+  <% @faqs.each do |faq| %>
+    <h3><%= faq.title %></h3>
+    <p><%= strip_tags(faq.description) %></p>
+  <% end %>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <div class="row">
+    <h4>
+      Sidebar
+    </h4>
+  </div>
+</div>

@@ -4,7 +4,6 @@ before_action :require_admin
 
 def index
 	@projects = Project.all.order('created_at desc')
-	
 end
 
 def show

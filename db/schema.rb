@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140830083414) do
+ActiveRecord::Schema.define(version: 20140902091556) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 20140830083414) do
   add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id"
   add_index "categorizations", ["project_id"], name: "index_categorizations_on_project_id"
 
+  create_table "faqs", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "favorites", force: true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
@@ -38,6 +45,13 @@ ActiveRecord::Schema.define(version: 20140830083414) do
 
   add_index "favorites", ["project_id"], name: "index_favorites_on_project_id"
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+
+  create_table "help_faqs", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pledges", force: true do |t|
     t.text     "comment"
