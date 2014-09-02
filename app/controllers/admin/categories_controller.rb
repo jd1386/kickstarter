@@ -4,7 +4,7 @@ before_action :require_admin
 
 
 def index
-	@categories = Category.all
+	@categories = Category.all.order('created_at desc')
 end
 
 def show

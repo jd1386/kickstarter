@@ -1,0 +1,31 @@
+<h3>Admin: Pledges</h3>
+<hr>
+
+<p>
+	<span><%= link_to 'Back', admin_path %></span> | 
+	<span><%= link_to 'Add New Category', '' %></span>
+</p>
+
+<table class="table table-striped">
+
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>project_id</th>
+			<th>user_id</th>
+			<th>amount</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<% @pledges.each do |pledge| %>
+			<td><%= pledge.id %></td>
+			<td><%= pledge.project_id %></td>
+			<td><%= pledge.user_id %></td>
+			<td><%= pledge.amount %></td>
+			<td><%= link_to "Edit", '' %> | <%= link_to "Delete", admin_pledge_path(pledge), method: :delete, data: { confirm: "Are you sure?" } %></td>
+		</tr>
+	</tbody>
+<% end %>
+</table>

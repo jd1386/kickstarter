@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/', to: 'dashboard#index', as: '/'
-    resources :projects, :users, :categories
+    resources :projects, :users, :categories, :pledges
   end
 	
 end
