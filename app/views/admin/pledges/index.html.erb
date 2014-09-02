@@ -26,6 +26,6 @@
 			<td><%= pledge.amount %></td>
 			<td><%= link_to "Edit", '' %> | <%= link_to "Delete", admin_pledge_path(pledge), method: :delete, data: { confirm: "Are you sure?" } %></td>
 		</tr>
+		<% end %>
 	</tbody>
-<% end %>
 </table>
