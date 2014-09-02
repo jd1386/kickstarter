@@ -5,6 +5,7 @@ namespace :db do
 		make_users
 		make_projects
 		make_pledges
+		make_faqs
 	end
 end
 
@@ -52,7 +53,7 @@ def make_projects
 		website = "http://www.orights.com"
 		pledging_ends_on = 10.days.from_now
 		category = rand(1..9)
-		user_id = rand(1..10)
+		user_id = rand(1..51)
 		
 
 		Project.create!(
@@ -71,7 +72,7 @@ def make_projects
 		50.times do |n|
 			amount = Faker::Number.number(2)
 			comment = Faker::Lorem.sentence(3)
-			project_id = rand(1..10)
+			project_id = rand(1..51)
 			user_id = rand(1..10)
 
 			Pledge.create!(
@@ -79,7 +80,18 @@ def make_projects
 				comment: comment,
 				project_id: project_id,
 				amount: 50
+				)
+		end
+	end
 
+	def make_faqs
+		20.times do |n|
+			title = Faker::Lorem.sentence(1)
+			description = Faker::Lorem.paragraph(8)
+
+			Help::Faq.create!(
+				title: title,
+				description: description
 				)
 		end
 	end

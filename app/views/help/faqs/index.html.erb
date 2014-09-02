@@ -2,18 +2,30 @@
 <hr>
 
 <div class="col-md-8">
-  <div class="row">
+  <div class="row" style="padding-right:50px">
   <% @faqs.each do |faq| %>
     <h3><%= faq.title %></h3>
-    <p><%= strip_tags(faq.description) %></p>
+    <p><%= sanitize(faq.description) %></p>
   <% end %>
   </div>
 </div>
 
 <div class="col-md-4">
   <div class="row">
-    <h4>
-      Sidebar
-    </h4>
+    <div class="well well-lg" style="background:#fff;">
+      <h4>FAQ</h4>
+      <hr>
+        <ul><strong>Backer Questions</strong>
+          <li>Backing a project</li>
+          <li>Getting rewards</li>
+          <li>Profile settings</li>
+          <li>Troubleshooting</li>
+        </ul>
+
+        <ul><strong>Creator Questions</strong>
+          <li>Getting started</li>
+          <li>Launching your project</li>
+        </ul>
+    </div>
   </div>
 </div>

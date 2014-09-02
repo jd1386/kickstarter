@@ -5,7 +5,7 @@
 			<%= link_to image_for(project), project %> 
 			<div class="caption">
 				<h5><%= link_to project.name, project %></h5>
-				<p><%= truncate(strip_tags(project.description).html_safe, length: 160, separator: ' ') { link_to "Continue Reading..", project } %></p>
+				<p><%= truncate(sanitize(project.description), length: 160, separator: ' ') { link_to "Continue Reading..", project } %></p>
 				<%= render 'shared/progress_bar', object: project.rate %>
 			
 
