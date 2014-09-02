@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
   root "categories#index"
 
   resources :categories
@@ -27,4 +29,6 @@ Rails.application.routes.draw do
     resources :faqs
   end
 	
+  get '/contact', to: 'static_pages#contact', as: 'contact'
+  
 end
