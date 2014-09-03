@@ -3,7 +3,7 @@
 
 <p>
 	<span><%= link_to 'Back', admin_path %></span> | 
-	<span><%= link_to 'Add New Category', '' %></span>
+	<span><%= link_to 'Add New Pledge', '' %></span>
 </p>
 
 <table class="table table-striped">
@@ -11,9 +11,10 @@
 	<thead>
 		<tr>
 			<th>#</th>
-			<th>project_id</th>
-			<th>user_id</th>
-			<th>amount</th>
+			<th>Project</th>
+			<th>User</th>
+			<th>Amount</th>
+			<th>Created</th>
 		</tr>
 	</thead>
 
@@ -21,9 +22,10 @@
 		<tr>
 			<% @pledges.each do |pledge| %>
 			<td><%= pledge.id %></td>
-			<td><%= pledge.project_id %></td>
-			<td><%= pledge.user_id %></td>
+			<td><%= link_to pledge.project.name, project_path(pledge.project) %></td>
+			<td><%= link_to pledge.user.name, user_path(pledge.user) %></td>
 			<td><%= pledge.amount %></td>
+			<td><%= pledge.created_at %></td>
 			<td><%= link_to "Edit", '' %> | <%= link_to "Delete", admin_pledge_path(pledge), method: :delete, data: { confirm: "Are you sure?" } %></td>
 		</tr>
 		<% end %>

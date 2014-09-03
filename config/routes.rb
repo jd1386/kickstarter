@@ -30,5 +30,6 @@ Rails.application.routes.draw do
   end
 	
   get '/contact', to: 'static_pages#contact', as: 'contact'
+  get '/terms', to: 'static_pages#terms', as: 'terms'
   
 end

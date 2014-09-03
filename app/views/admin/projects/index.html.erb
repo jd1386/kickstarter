@@ -19,8 +19,8 @@
 		<tr>
 			<% @projects.each do |project| %>
 			<td><%= project.id %></td>
-			<td><%= link_to project.name, admin_project_path(project) %></td>
-			<td><%= project.user_id %></td>
+			<td><%= link_to project.name, project_path(project) %></td>
+			<td><%= link_to project.user.name, user_path(project.user) %></td>
 			<td><%= project.pledges.count %></td>
 			<td><%= project.fans.count %></td>
 			<td><%= project.created_at %></td>
