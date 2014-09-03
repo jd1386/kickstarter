@@ -9,7 +9,7 @@ body {
   background-color: #f7fafa;
 }
 body > .container {
-       padding: 60px 40px 0;
+       padding: 60px 40px 60px;
 }
 
 .navbar-default {
@@ -177,3 +177,8 @@ h5 a {
   }
 }
 
+/* footer */
+
+.footer {
+  background: #eee;
+}
